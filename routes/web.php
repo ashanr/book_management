@@ -4,10 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StaffRegistrationController;
 use App\Http\Controllers\StaffAuthController;
 use App\Http\Controllers\ReaderRegistrationController;
-use App\Http\Controllers\ReaderAuthController;
 use App\Http\Controllers\ReaderController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\StaffController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\BorrowController;
 
@@ -27,7 +26,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', function () { return view('login');})->name('login');
+Route::get('/login', function () {
+    return view('login');
+})->name('login');
 
 Route::post('/login', [AuthController::class, 'loginDispatcher']);
 Route::get('stafflogout', [StaffAuthController::class, 'logout'])->name('staff.logout');
@@ -38,7 +39,7 @@ Route::post('/staff/register', [StaffRegistrationController::class, 'register'])
 Route::get('/staff', [StaffRegistrationController::class, 'listStaff'])->name('staff.index');
 Route::post('/staff/changeStatus/{id}', [StaffRegistrationController::class, 'changeStatus'])->name('staff.changestatus');
 
-Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+Route::get('/admin/dashboard', [StaffController::class, 'dashboard'])->name('admin.dashboard');
 
 # Book Manage
 Route::get('admin/books/create', [BookController::class, 'create'])->name('admin.books.create');
@@ -50,8 +51,8 @@ Route::get('admin/books/{id}/edit', [BookController::class, 'edit'])->name('admi
 Route::put('admin/books/{id}/update', [BookController::class, 'update'])->name('admin.books.update');
 
 # Book Borrow
-Route::get('admin/book/{id}/borrow', [BorrowController::class , 'createBorrowRecord'])->name('admin.books.borrow_book');
-Route::post('admin/book/borrow', [BorrowController::class , 'store'])->name('admin.book.borrow');
+Route::get('admin/book/{id}/borrow', [BorrowController::class, 'createBorrowRecord'])->name('admin.books.borrow_book');
+Route::post('admin/book/borrow', [BorrowController::class, 'store'])->name('admin.book.borrow');
 Route::get('borrows', [BorrowController::class, 'index'])->name('reader.borrows');
 
 # Reader Routers

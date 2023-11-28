@@ -1,15 +1,14 @@
 # Booking App
 
-This is a simple Laravel-based Booking App that allows staff and readers to interact with the system. This repository contains the codebase for the application.
+This is a simple Laravel-based Book Management System that allows staff and readers to interact with the system. 
 
 ## Features
 
-- Staff and Reader roles
-- Dashboard for Staff
-- Registration for both Staff and Readers
+- Staff (Admin,Editor,Viewer) and Reader roles
+- Dashboard for Staff and Readers
+- Registration for both Staff Roles and Readers
 - User status management for Staff users
 - Book Create , Update and Delete 
-- Login and Logout functionality
 
 ## Requirements
 
@@ -24,13 +23,13 @@ This is a simple Laravel-based Booking App that allows staff and readers to inte
 1. Clone the repository
 
     ```bash
-    git clone https://github.com/booking_app.git
+    git clone https://github.com/book_management.git
     ```
 
 2. Navigate to the project directory
 
     ```bash
-    cd booking_app
+    cd book_management
     ```
 
 3. Install PHP dependencies
