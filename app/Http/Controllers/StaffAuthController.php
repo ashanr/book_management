@@ -35,25 +35,25 @@ class StaffAuthController extends Controller
                     case 'admin':
 
                         if ($role = Role::where('name', 'admin')->where('guard_name', 'staff')->first()) {
-                            $user->assignRole($role);
+                            $user->assignRole('admin');
                         }
                         break;
                     case 'editor':
 
                         if ($role = Role::where('name', 'editor')->where('guard_name', 'staff')->first()) {
-                            $user->assignRole($role);
+                            $user->assignRole('editor');
                         }
                         break;
                     case 'viewer':
 
                         if ($role = Role::where('name', 'viewer')->where('guard_name', 'staff')->first()) {
-                            $user->assignRole($role);
+                            $user->assignRole('viewer');
                         }
                         break;
                     default:
 
                         if ($role = Role::where('name', 'viewer')->where('guard_name', 'staff')->first()) {
-                            $user->assignRole($role);
+                            $user->assignRole('viewer');
                         }
                         break;
                 }

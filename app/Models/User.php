@@ -53,6 +53,21 @@ class User extends Authenticatable
         return $this->role === 'admin';
     }
 
+
+    public function checkUserPermissions($userId)
+    {
+        $user = User::find($userId);
+        if ($user) {
+            $permissions = $user->getAllPermissions(); // Gets all permissions, including those via roles
+            // Or
+            $permissions = $user->permissions; // Gets direct permissions
+
+            return $permissions->pluck('name'); // Returns a collection of permission names
+        }
+
+        return 'User not found';
+    }
+
 }
 
 

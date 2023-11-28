@@ -8,7 +8,7 @@ This is a simple Laravel-based Book Management System that allows staff and read
 - Dashboard for Staff and Readers
 - Registration for both Staff Roles and Readers
 - User status management for Staff users
-- Book Create , Update and Delete 
+- Book Create, Update and Delete 
 
 ## Requirements
 

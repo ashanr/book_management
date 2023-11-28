@@ -42,7 +42,7 @@ return [
         ],
         'staff' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'staff',
         ],
         'reader' => [
             'driver' => 'session',
@@ -80,11 +80,6 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Reader::class,
         ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
     ],
 
     /*
@@ -119,12 +114,7 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
-        'users' => [
-            'reader' => 'reder',
-            'table' => 'password_reset_tokens',
-            'expire' => 60,
-            'throttle' => 60,
-        ],
+
     ],
 
     /*

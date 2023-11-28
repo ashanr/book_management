@@ -41,12 +41,16 @@ Route::post('/staff/changeStatus/{id}', [StaffRegistrationController::class, 'ch
 
 Route::get('/admin/dashboard', [StaffController::class, 'dashboard'])->name('admin.dashboard');
 
+// Route::middleware('can:view books,staff')->group(function () {
+
+Route::get('admin/books/index', [BookController::class, 'index'])->name('admin.books.index');
+// });
+
 # Book Manage
 Route::get('admin/books/create', [BookController::class, 'create'])->name('admin.books.create');
 Route::post('admin/books/store', [BookController::class, 'store'])->name('admin.books.store');
 Route::post('admin/books/delete', [BookController::class, 'destroy'])->name('admin.books.destroy');
 
-Route::get('admin/books/index', [BookController::class, 'index'])->name('admin.books.index');
 Route::get('admin/books/{id}/edit', [BookController::class, 'edit'])->name('admin.books.edit');
 Route::put('admin/books/{id}/update', [BookController::class, 'update'])->name('admin.books.update');
 

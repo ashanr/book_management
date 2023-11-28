@@ -35,7 +35,7 @@ class StaffRolesAndPermissionsSeeder extends Seeder
         $viewerRole->givePermissionTo('view books');
 
         $editorRole = Role::create(['name' => 'editor', 'guard_name' => 'staff']);
-        $editorRole->syncPermissions(['edit books', 'assign books']);
+        $editorRole->syncPermissions(['view books', 'edit books', 'assign books']);
 
         // Create 'reader' role and assign permission
         $readerRole = Role::create(['name' => 'reader', 'guard_name' => 'reader']);
