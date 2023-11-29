@@ -8,6 +8,7 @@ use App\Http\Controllers\ReaderController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\BorrowController;
+use App\Http\Controllers\ReaderAuthController;
 
 
 /*
@@ -37,7 +38,7 @@ Route::post('/staff/register', [StaffController::class, 'register']);
 Route::get('/staff', [StaffController::class, 'listStaff'])->name('staff.index');
 Route::post('/staff/changeStatus/{id}', [StaffController::class, 'changeStatus'])->name('staff.changestatus');
 
-Route::get('/admin/dashboard', [StaffController::class, 'dashboard'])->name('admin.dashboard');
+Route::get('/staff/dashboard', [StaffController::class, 'dashboard'])->name('admin.dashboard');
 
 // Route::middleware('can:view books,staff')->group(function () {
 
@@ -57,7 +58,13 @@ Route::get('admin/book/{id}/borrow', [BorrowController::class, 'createBorrowReco
 Route::post('admin/book/borrow', [BorrowController::class, 'store'])->name('admin.book.borrow');
 Route::get('borrows', [BorrowController::class, 'index'])->name('reader.borrows');
 
-# Reader Routers
+# Reader Routes
+
+Route::get('/reader/login', function () {
+    return view('readerlogin');
+})->name('login');
+
+Route::post('/reader/login', [ReaderAuthController::class, 'login'])->name('reader.login');
 Route::get('/reader/register', [ReaderRegistrationController::class, 'showRegistrationForm'])->name('reader.register');
 Route::post('/reader/register', [ReaderRegistrationController::class, 'register']);
 Route::get('/reader/dashboard', [ReaderController::class, 'dashboard'])->name('reader.dashboard');

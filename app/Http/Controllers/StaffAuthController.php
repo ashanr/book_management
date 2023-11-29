@@ -59,7 +59,7 @@ class StaffAuthController extends Controller
                 }
             }
 
-            return redirect()->intended('/admin/dashboard');
+            return redirect()->intended('/staff/dashboard');
         }
 
 
