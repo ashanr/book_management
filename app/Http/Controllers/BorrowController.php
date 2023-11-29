@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\Borrow;
 use App\Models\Book;
 use App\Models\User;
-use App\Models\Reader;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\BorrowedBookMail;
 use Illuminate\Support\Facades\Auth;
@@ -27,12 +26,14 @@ class BorrowController extends Controller
         return view('reader.borrows', ['borrows' => $borrows]);
     }
 
-    public function createBorrowRecord()
+    public function createBorrowRecord($bookId)
     {
-        $books = Book::all();
-        $users = Reader::all(); // Assuming you have a User model
-        return view('admin.books.borrow_book', ['books' => $books, 'users' => $users]);
+
+        $book = Book::find($bookId);
+        $users = User::all();
+        return view('admin.books.borrow_book', ['book' => $book, 'users' => $users]);
     }
+
 
     public function store(Request $request)
     {
@@ -45,13 +46,12 @@ class BorrowController extends Controller
 
         $borrow->save();
 
-        $borrowed_book = Borrow::with(['book', 'user']) // 'book' and 'user' are the relationship methods in your Borrow model
-               ->find($borrow->id); // Replace $borrowId with the actual ID of the borrow record
-
+        // $borrowed_book = Borrow::with(['book', 'user']) // 'book' and 'user' are the relationship methods in your Borrow model
+        //     ->find($borrow->id);
 
         // Send Email to the Reader
-        Mail::to(Reader::find($request->user_id)->email)->send(new BorrowedBookMail($borrowed_book));
+        // Mail::to(User::find($request->user_id)->email)->send(new BorrowedBookMail($borrowed_book));
 
-        return redirect()->back();
+        return redirect()->route('admin.books.index')->with('success', 'Book borrowed successfully.');
     }
 }

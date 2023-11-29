@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Book;
-use App\Models\Reader;
+use App\Models\User;
 
 class Borrow extends Model
 {
@@ -21,7 +21,7 @@ class Borrow extends Model
 
     public function user()
     {
-        return $this->belongsTo(Reader::class);
+        return $this->belongsTo(User::class);
     }
 
 }

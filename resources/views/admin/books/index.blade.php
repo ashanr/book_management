@@ -4,7 +4,8 @@
     <h1 class="text-2xl font-semibold mb-4">Books</h1>
 
     <!-- Button to go to create book page -->
-    <a href="{{ route('admin.books.create') }}" class="bg-blue-500 mb-3 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4">
+    <a href="{{ route('admin.books.create') }}"
+        class="bg-blue-500 mb-3 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4">
         Add New Book
     </a>
 
@@ -20,7 +21,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($books as $book)
+            @foreach ($books as $book)
                 <tr>
                     <td class="py-2 px-4 border-b">{{ $book->id }}</td>
                     <td class="py-2 px-4 border-b">{{ $book->title }}</td>
@@ -28,16 +29,18 @@
                     <td class="py-2 px-4 border-b">{{ $book->isbn }}</td>
                     <td class="py-2 px-4 border-b">{{ $book->status }}</td>
                     <td class="py-2 px-4 border-b">
-                        <a href="{{ route('admin.books.edit', $book->id) }}" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-1 px-2 rounded inline-block">
+                        <a href="{{ route('admin.books.edit', $book->id) }}"
+                            class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-1 px-2 rounded inline-block">
                             Edit
                         </a>
-                        <a href="{{ route('admin.books.borrow_book', $book->id) }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded inline-block">
+                        <a href="{{ route('admin.books.borrow_book', $book->id) }}"
+                            class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded inline-block">
                             Borrow
                         </a>
-                        <form action="{{ route('admin.books.destroy',  ['id' => $book->id]) }}" method="POST" class="inline">
+                        <form action="{{ route('admin.books.delete', ['id' => $book->id]) }}" method="POST" class="inline">
                             @csrf
-                            @method('DELETE')
-                            <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">
+                            <button type="submit"
+                                class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">
                                 Delete
                             </button>
                         </form>
@@ -47,19 +50,4 @@
             @endforeach
         </tbody>
     </table>
-
-    <!-- Flash Message Section -->
-    @if (session('error'))
-                <div class="alert alert-danger bg-red-500 text-white p-4 mb-4">
-                    {{ session('error') }}
-                </div>
-            @endif
-            @if (session('success'))
-                <div class="alert alert-success bg-green-500 text-white p-4 mb-4">
-                    {{ session('success') }}
-                </div>
-            @endif
-            <!-- End of Flash Message Section -->
-
-
 @endsection

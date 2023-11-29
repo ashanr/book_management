@@ -86,13 +86,12 @@ class BookController extends Controller
 
         $book = Book::find($id);
         $user = Auth::guard('staff')->user();
-        $logged_in_user = Auth::guard('staff')->user();
 
-        if (!$user instanceof User || !$logged_in_user->hasPermissionTo('edit books')) {
+        if (!$user instanceof User || !$user->hasPermissionTo('edit books')) {
             return redirect()->route('admin.dashboard')->with('error', 'You do not have permission to view this page.');
         } else {
             $books = Book::all();
-            return view('admin.books.edit', compact('books'));
+            return view('admin.books.edit', compact('book'));
             ;
         }
 
@@ -124,9 +123,21 @@ class BookController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        Book::find($id)->delete();
-        return redirect()->route('admin.books.destroy');
+        // Check if the authenticated user is an admin
+        $user = Auth::guard('staff')->user();
+        if ($user->hasPermissionTo('view books')) {
+            $book = Book::find($id);
+            if ($book) {
+                $book->delete();
+                return redirect()->route('admin.books.index')->with('success', 'Book deleted successfully');
+            } else {
+                return redirect()->route('admin.books.index')->with('error', 'Book not found');
+            }
+        } else {
+            // If not an admin, redirect with an error message
+            return redirect()->route('admin.books.index')->with('error', 'You do not have permission to perform this action');
+        }
     }
 }

@@ -9,16 +9,16 @@
             <div class="mb-4">
                 <label class="text-xl text-gray-600">Select Book <span class="text-red-500">*</span></label></br>
                 <select name="book_id" required>
-                    @foreach($books as $book)
-                        <option value="{{ $book->id }}">{{ $book->title }}</option>
-                    @endforeach
+
+                    <option value="{{ $book->id }}">{{ $book->title }}</option>
+
                 </select>
             </div>
 
             <div class="mb-4">
                 <label class="text-xl text-gray-600">Select User (Reader) <span class="text-red-500">*</span></label></br>
                 <select name="user_id" required>
-                    @foreach($users as $user)
+                    @foreach ($users as $user)
                         <option value="{{ $user->id }}">{{ $user->name }}</option>
                     @endforeach
                 </select>
@@ -26,7 +26,8 @@
 
             <div class="mb-4">
                 <label class="text-xl text-gray-600">Return By <span class="text-red-500">*</span></label></br>
-                <input type="date" name="return_by" required class="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                <input type="date" name="return_by" required
+                    class="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
             </div>
 
             <div class="mb-4">

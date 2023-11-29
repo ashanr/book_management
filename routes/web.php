@@ -29,7 +29,8 @@ Route::get('/', function () {
 
 //Staff Route
 Route::get('/login', function () {
-    return view('login'); })->name('staff.login');
+    return view('login');
+})->name('staff.login');
 Route::post('/login', [AuthController::class, 'loginDispatcher']);
 Route::get('stafflogout', [StaffAuthController::class, 'logout'])->name('staff.logout');
 Route::get('/staff/register', [StaffController::class, 'showRegistrationForm'])->name('staff.register');
@@ -46,13 +47,13 @@ Route::get('admin/books/index', [BookController::class, 'index'])->name('admin.b
 # Book Manage
 Route::get('admin/books/create', [BookController::class, 'create'])->name('admin.books.create');
 Route::post('admin/books/store', [BookController::class, 'store'])->name('admin.books.store');
-Route::post('admin/books/delete', [BookController::class, 'destroy'])->name('admin.books.destroy');
+Route::post('admin/books/{id}/delete', [BookController::class, 'destroy'])->name('admin.books.delete');
 
 Route::get('admin/books/{id}/edit', [BookController::class, 'edit'])->name('admin.books.edit');
 Route::put('admin/books/{id}/update', [BookController::class, 'update'])->name('admin.books.update');
 
 # Book Borrow
-Route::get('admin/book/{id}/borrow', [BorrowController::class, 'createBorrowRecord'])->name('admin.books.borrow_book');
+Route::get('admin/book/{bookd}/borrow', [BorrowController::class, 'createBorrowRecord'])->name('admin.books.borrow_book');
 Route::post('admin/book/borrow', [BorrowController::class, 'store'])->name('admin.book.borrow');
 Route::get('borrows', [BorrowController::class, 'index'])->name('reader.borrows');
 
