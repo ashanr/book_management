@@ -1,14 +1,27 @@
-# Booking App
+# Book Management system
 
 This is a simple Laravel-based Book Management System that allows staff and readers to interact with the system. 
 
 ## Features
 
-- Staff (Admin,Editor,Viewer) and Reader roles
-- Dashboard for Staff and Readers
-- Registration for both Staff Roles and Readers
-- User status management for Staff users
-- Book Create, Update and Delete 
+- Staff (Admin, Editor, Viewer) and Reader roles.
+- Dashboard for Staff and Readers.
+- Registration and Login for both Staff Roles and Readers.
+- User status management for Staff users.
+- Book Create, Update, Delete, and Borrow functionalities.
+
+## Book Borrowing Feature
+
+- Readers can browse and borrow available books.
+- Admin and Editors can assign books to Readers for a limited date range.
+- Readers have a dashboard to view their borrowed books and borrowing history.
+- Email notifications are sent to Readers about book borrowings.
+
+## User Login
+
+- Separate login portals for Staff and Readers.
+- Staff users (Admin, Editor, Viewer) can manage books and user statuses.
+- Readers can register, log in, and interact with the book borrowing functionalities.
 
 ## Requirements
 
@@ -80,8 +93,8 @@ This is a simple Laravel-based Book Management System that allows staff and read
 
 Visit `http://localhost:8000` to access the application.
 
-- Admin can log in and view the dashboard, as well as manage user statuses.
-- Readers can register and interact with the booking functionalities (still under development).
+- Admin can log in and view the dashboard, manage user statuses, and handle book borrowings.
+- Readers can register, log in, and interact with the book borrowing functionalities.
 
 ## Contributing
 
