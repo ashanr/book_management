@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -24,13 +25,15 @@ class BookController extends Controller
 
         $user = Auth::guard('staff')->user();
 
-        if (!$user->hasPermissionTo('view books')) {
+        if (!$user instanceof User || !$user->hasPermissionTo('view books')) {
+            // if (!$user->canViewBooks()) {
             return redirect()->route('admin.dashboard')->with('error', 'You do not have permission to view this page.');
         } else {
             $books = Book::all();
             return view('admin.books.index', compact('books'))->with('success', 'Operation completed successfully.');
             ;
         }
+
     }
 
     /**
@@ -39,7 +42,7 @@ class BookController extends Controller
     public function create()
     {
         $user = Auth::guard('staff')->user();
-        if (!$user->hasPermissionTo('edit books')) {
+        if (!$user instanceof User || !$user->hasPermissionTo('edit books')) {
             return redirect()->route('admin.dashboard')->with('error', 'You do not have permission to view this page.');
         } else {
             $books = Book::all();

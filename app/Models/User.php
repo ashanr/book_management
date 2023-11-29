@@ -68,6 +68,11 @@ class User extends Authenticatable
         return 'User not found';
     }
 
+
+    public function canViewBooks()
+    {
+        return $this->hasPermissionTo('view books') || $this->hasRole('admin');
+    }
 }
 
 
