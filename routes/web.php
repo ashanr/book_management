@@ -1,12 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\StaffRegistrationController;
+use App\Http\Controllers\StaffController;
 use App\Http\Controllers\StaffAuthController;
 use App\Http\Controllers\ReaderRegistrationController;
 use App\Http\Controllers\ReaderController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\StaffController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\BorrowController;
 
@@ -33,11 +32,10 @@ Route::get('/login', function () {
 Route::post('/login', [AuthController::class, 'loginDispatcher']);
 Route::get('stafflogout', [StaffAuthController::class, 'logout'])->name('staff.logout');
 
-// Use array-based syntax for StaffRegistrationController
-Route::get('/staff/register', [StaffRegistrationController::class, 'showRegistrationForm'])->name('staff.register');
-Route::post('/staff/register', [StaffRegistrationController::class, 'register']);
-Route::get('/staff', [StaffRegistrationController::class, 'listStaff'])->name('staff.index');
-Route::post('/staff/changeStatus/{id}', [StaffRegistrationController::class, 'changeStatus'])->name('staff.changestatus');
+Route::get('/staff/register', [StaffController::class, 'showRegistrationForm'])->name('staff.register');
+Route::post('/staff/register', [StaffController::class, 'register']);
+Route::get('/staff', [StaffController::class, 'listStaff'])->name('staff.index');
+Route::post('/staff/changeStatus/{id}', [StaffController::class, 'changeStatus'])->name('staff.changestatus');
 
 Route::get('/admin/dashboard', [StaffController::class, 'dashboard'])->name('admin.dashboard');
 

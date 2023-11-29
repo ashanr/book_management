@@ -14,24 +14,29 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($users as $user)
-                    <tr class="hover:bg-gray-100">
-                        <td class="py-2 px-4 border-b border-gray-300">{{ $user->name }}</td>
-                        <td class="py-2 px-4 border-b border-gray-300">{{ $user->email }}</td>
-                        <td class="py-2 px-4 border-b border-gray-300">{{ $user->status }}</td>
-                        <td class="py-2 px-4 border-b border-gray-300">
-                            <form action="/users/changeStatus/{{ $user->id }}" method="post" class="flex items-center">
-                                @csrf
-                                <select name="status" class="border rounded px-3 py-2 focus:ring focus:ring-opacity-50">
-                                    <option value="active" {{ $user->status === 'active' ? 'selected' : '' }}>Active</option>
-                                    <option value="inactive" {{ $user->status === 'inactive' ? 'selected' : '' }}>Inactive</option>
-                                </select>
-                                <button type="submit" class="ml-3 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:border-blue-700 focus:ring focus:ring-blue-200">
-                                    Change
-                                </button>
-                            </form>
-                        </td>
-                    </tr>
+                    @foreach ($users as $user)
+                        <tr class="hover:bg-gray-100">
+                            <td class="py-2 px-4 border-b border-gray-300">{{ $user->name }}</td>
+                            <td class="py-2 px-4 border-b border-gray-300">{{ $user->email }}</td>
+                            <td class="py-2 px-4 border-b border-gray-300">{{ $user->status }}</td>
+                            <td class="py-2 px-4 border-b border-gray-300">
+                                <form action="/staff/changeStatus/{{ $user->id }}" method="post"
+                                    class="flex items-center">
+                                    @csrf
+                                    <select name="status"
+                                        class="border rounded px-3 py-2 focus:ring focus:ring-opacity-50">
+                                        <option value="active" {{ $user->status === 'active' ? 'selected' : '' }}>Active
+                                        </option>
+                                        <option value="inactive" {{ $user->status === 'inactive' ? 'selected' : '' }}>
+                                            Inactive</option>
+                                    </select>
+                                    <button type="submit"
+                                        class="ml-3 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:border-blue-700 focus:ring focus:ring-blue-200">
+                                        Change
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
                     @endforeach
                 </tbody>
             </table>
