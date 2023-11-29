@@ -15,6 +15,7 @@ class CreateBooksTable extends Migration
             $table->string('isbn')->unique();
             $table->text('description')->nullable();
             $table->integer('stock')->default(0); // Number of copies available
+            $table->string('status')->default('available');
             $table->timestamps();
         });
     }

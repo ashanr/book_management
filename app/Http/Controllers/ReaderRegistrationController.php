@@ -49,6 +49,6 @@ class ReaderRegistrationController extends Controller
 
         // Add a flash message to the session
         session()->flash('user_registered', 'A new reader has been registered.');
-        return redirect()->route('login');
+        return redirect()->route('reader.login');
     }
 }

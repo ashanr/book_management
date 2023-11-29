@@ -26,18 +26,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', function () {
-    return view('login');
-})->name('login');
 
+//Staff Route
+Route::get('/login', function () {
+    return view('login'); })->name('staff.login');
 Route::post('/login', [AuthController::class, 'loginDispatcher']);
 Route::get('stafflogout', [StaffAuthController::class, 'logout'])->name('staff.logout');
-
 Route::get('/staff/register', [StaffController::class, 'showRegistrationForm'])->name('staff.register');
 Route::post('/staff/register', [StaffController::class, 'register']);
 Route::get('/staff', [StaffController::class, 'listStaff'])->name('staff.index');
 Route::post('/staff/changeStatus/{id}', [StaffController::class, 'changeStatus'])->name('staff.changestatus');
-
 Route::get('/staff/dashboard', [StaffController::class, 'dashboard'])->name('admin.dashboard');
 
 // Route::middleware('can:view books,staff')->group(function () {

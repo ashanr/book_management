@@ -80,7 +80,7 @@ class StaffController extends Controller
 
             // Flash message and redirect on successful registration
             session()->flash('user_registered', 'A new user has been registered.');
-            return redirect()->route('login');
+            return redirect()->route('staff.login');
         } catch (\Exception $e) {
             // Handle any exception that occurred during the user creation
             return back()->withErrors(['error' => 'User registration failed: ' . $e->getMessage()]);

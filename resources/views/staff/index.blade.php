@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container mx-auto p-4">
-        <h1 class="text-4xl font-bold mb-8">Staff Users</h1>
+        <h1 class="text-4xl font-bold mb-8">System Users</h1>
         <div class="overflow-x-auto">
             <table class="min-w-full bg-white border border-gray-300 text-sm">
                 <thead class="bg-gray-200 text-gray-600">
