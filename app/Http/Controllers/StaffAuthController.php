@@ -15,8 +15,7 @@ class StaffAuthController extends Controller
 
         $validator = Validator::make($request->all(), [
             'email' => 'required|email',
-            'password' => 'required',
-            'user_type' => 'required|string',
+            'password' => 'required'
         ]);
 
         if ($validator->fails()) {
