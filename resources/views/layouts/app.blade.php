@@ -36,20 +36,33 @@
 
     <nav class="bg-blue-500 p-4">
         <div class="flex items-center justify-between">
-            <a href="#" class="text-white text-lg font-semibold">Book Management System</a>
+            <a href="#"
+                class="text-white text-2xl font-bold tracking-wide hover:text-blue-200 transition duration-300 ease-in-out">Book
+                Management System</a>
             <div>
-
                 @if (Auth::user() && Auth::user()->isAdmin())
                     <a href="{{ url('staff/dashboard') }}" class="text-white mx-2"> Dashboard</a>
                 @else
-                    <a href="{{ url('/') }}" class="text-white mx-2">Home</a>
-                    <a href="{{ url('staff/register') }}" class="text-white mx-2">Staff Register</a>
-                    <a href="{{ url('reader/register') }}" class="text-white mx-2">Reader Register</a>
-                    <a href="{{ url('/login') }}" class="text-white mx-2">Staff Login</a>
-                    <a href="{{ url('/reader/login') }}" class="text-white mx-2">Reader Login</a>
+                    <a href="{{ url('/') }}"
+                        class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out mx-2">Home</a>
+                    <a href="{{ url('staff/register') }}"
+                        class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out mx-2">Staff
+                        Register</a>
+                    <a href="{{ url('reader/register') }}"
+                        class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out mx-2">Reader
+                        Register</a>
+                    <a href="{{ url('/login') }}"
+                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out mx-2">Staff
+                        Login</a>
+                    <a href="{{ url('/reader/login') }}"
+                        class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out mx-2">Reader
+                        Login</a>
 
 
-                    <a class="text-gray-600 hover:text-gray-900" href="{{ route('staff.logout') }}">Logout</a>
+                    <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out"
+                        href="{{ route('staff.logout') }}">
+                        Logout
+                    </a>
                 @endif
             </div>
         </div>

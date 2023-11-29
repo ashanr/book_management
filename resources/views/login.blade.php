@@ -5,18 +5,11 @@
         <div class="flex justify-center">
             <div class="w-full lg:w-1/2">
                 <div class="bg-white p-8 rounded-lg shadow-lg">
-                    <div class="font-bold text-2xl mb-4">Login</div>
+                    <div class="font-bold text-2xl mb-4">Staff Login</div>
 
                     <form action="{{ url('/login') }}" method="post">
                         @csrf
-                        <div class="mb-4">
-                            <label for="user_type" class="block text-sm font-medium text-gray-600">Role</label>
-                            <select name="user_type" id="user_type" class="mt-1 p-2 w-full border rounded-md">
-                                <option value="admin">Admin</option>
-                                <option value="editor">Editor</option>
-                                <option value="viewer">Viewer</option>
-                            </select>
-                        </div>
+
                         <div class="mb-4">
                             <label for="email" class="block text-sm font-medium text-gray-600">Email</label>
                             <input type="email" name="email" id="email" class="mt-1 p-2 w-full border rounded-md"

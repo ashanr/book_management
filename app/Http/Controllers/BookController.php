@@ -85,14 +85,14 @@ class BookController extends Controller
     {
 
         $book = Book::find($id);
-        $user = Auth::user();
+        $user = Auth::guard('staff')->user();
         $logged_in_user = Auth::guard('staff')->user();
 
-        if (!$logged_in_user->hasPermissionTo('edit books')) {
+        if (!$user instanceof User || !$logged_in_user->hasPermissionTo('edit books')) {
             return redirect()->route('admin.dashboard')->with('error', 'You do not have permission to view this page.');
         } else {
             $books = Book::all();
-            return view('admin.books.edit', compact('books'))->with('success', 'Operation completed successfully.');
+            return view('admin.books.edit', compact('books'));
             ;
         }
 
